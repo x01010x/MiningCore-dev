@@ -1,0 +1,93 @@
+﻿{
+    "logging": {
+        "level": "info",
+        "enableConsoleLog": true,
+        "enableConsoleColors": true,
+        "logFile": "",
+        "logBaseDirectory": "",
+        "perPoolLogFile": false
+    },
+    "banning": {
+        "manager": "integrated",
+        "banOnJunkReceive": true,
+        "banOnInvalidShares": false
+    },
+    "notifications": {
+        "enabled": true,
+        "email": {
+            "host": "smtp.example.com",
+            "port": 587,
+            "user": "user",
+            "password": "password",
+            "fromAddress": "info@yourpool.org",
+            "fromName": "support"
+        },
+        "admin": {
+            "enabled": false,
+            "emailAddress": "user@example.com",
+            "notifyBlockFound": true
+        }
+    },
+    "persistence": {
+        "postgres": {
+            "host": "127.0.0.1",
+            "port": 5432,
+            "user": "miningcore",
+            "password": "password",
+            "database": "miningcore"
+        }
+    },
+    "paymentProcessing": {
+        "enabled": true,
+        "interval": 600,
+        "shareRecoveryFile": "recovered-shares.txt"
+    },
+    "pools": [{
+        "id": "kylacoin",
+        "enabled": true,
+        "coin": "kylacoin",
+        "address": "kc1q39e75kcrez9ramjhjguud43nwkcm8lw03psx28", //kylacoin-cli getnewaddress "" "bech32"
+		"addressType": "BechSegwit",
+		"bechPrefix": "kc",
+        "rewardRecipients": [{
+            "address": "kc1q39e75kcrez9ramjhjguud43nwkcm8lw03psx28",
+            "percentage": 0
+        }],
+        "blockRefreshInterval": 500,
+        "jobRebroadcastTimeout": 10,
+        "clientConnectionTimeout": 600,
+        "banning": {
+            "enabled": true,
+            "time": 600,
+            "invalidPercent": 50,
+            "checkThreshold": 50
+        },
+        "ports": {
+            "3063": {
+                "listenAddress": "0.0.0.0",
+                "difficulty": 2,
+                "name": "GPU/FPGA Mining",
+                "varDiff": {
+                    "minDiff": 1,
+                    "targetTime": 15,
+                    "retargetTime": 90,
+                    "variancePercent": 30
+                }
+            }
+        },
+        "daemons": [{
+            "host": "127.0.0.1",
+            "port": 5110,
+            "user": "user",
+            "password": "password"
+        }],
+        "paymentProcessing": {
+            "enabled": true,
+            "minimumPayment": 0.001,
+            "payoutScheme": "PPLNS",
+            "payoutSchemeConfig": {
+                "factor": 0.5
+            }
+        }
+    }]
+}
