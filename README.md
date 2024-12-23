@@ -225,6 +225,19 @@ Miningcore comes with an integrated REST API. Please refer to this page for inst
 A public production pool requires a web-frontend for your users to check their hashrate, earnings etc. Miningcore does not include such frontend but there are several community projects that can be used as starting point.
 
 Once again, do not run a production pool on Windows! This is not a supported configuration.
+## Errors
+
+### First, try to remove/uninstall older .Net, if any, then install .Net 6
+```console
+echo "$(tput setaf 3)Installing .Net 6$(tput sgr0)"
+sudo apt remove 'dotnet*'
+sudo apt remove 'aspnetcore*'
+sudo apt remove 'netstandard*'
+sudo rm /etc/apt/sources.list.d/microsoft-prod.list
+sudo rm /etc/apt/sources.list.d/microsoft-prod.list.save
+sudo apt update
+sudo apt install dotnet6
+```
 
 ## Donations
 
